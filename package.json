@@ -2,7 +2,7 @@
 	"name": "colorify.org",
 	"version": "1.0.0",
 	"private": false,
-	"homepage": "https://rahmanyerli.github.io/colorify.org/",
+	"homepage": "https://rahmanyerli.github.io/colorify/",
 	"dependencies": {
 		"gh-pages": "^2.0.1",
 		"react": "^16.8.0",
