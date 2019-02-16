@@ -16,12 +16,12 @@ self.__precacheManifest = [
     "url": "/colorify/static/js/runtime~main.62ec2b76.js"
   },
   {
-    "revision": "950307b5c330dc87fdbc1697de0faf31",
-    "url": "/colorify/static/media/home.950307b5.svg"
-  },
-  {
     "revision": "86819838dd9f708c3245e3b57de9f1c4",
     "url": "/colorify/static/media/logo.86819838.svg"
+  },
+  {
+    "revision": "950307b5c330dc87fdbc1697de0faf31",
+    "url": "/colorify/static/media/home.950307b5.svg"
   },
   {
     "revision": "25a16a5b35a8d9fa1595",
