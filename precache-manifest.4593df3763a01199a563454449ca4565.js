@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "8e485e29bea66a7e67607676f2365acd",
-    "url": "/colorify/static/media/gear.8e485e29.svg"
+    "revision": "950307b5c330dc87fdbc1697de0faf31",
+    "url": "/colorify/static/media/home.950307b5.svg"
   },
   {
-    "revision": "25a16a5b35a8d9fa1595",
+    "revision": "19713ebdff83e4ebbbcf",
     "url": "/colorify/static/css/main.1b567745.chunk.css"
   },
   {
@@ -20,12 +20,12 @@ self.__precacheManifest = [
     "url": "/colorify/static/media/logo.86819838.svg"
   },
   {
-    "revision": "950307b5c330dc87fdbc1697de0faf31",
-    "url": "/colorify/static/media/home.950307b5.svg"
+    "revision": "8e485e29bea66a7e67607676f2365acd",
+    "url": "/colorify/static/media/gear.8e485e29.svg"
   },
   {
-    "revision": "25a16a5b35a8d9fa1595",
-    "url": "/colorify/static/js/main.25a16a5b.chunk.js"
+    "revision": "19713ebdff83e4ebbbcf",
+    "url": "/colorify/static/js/main.19713ebd.chunk.js"
   },
   {
     "revision": "618c2838eebecabf0e7ad2bb69422f64",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/colorify/static/media/menu.1abef5f1.svg"
   },
   {
-    "revision": "70f147f0a2997c0dfa6b08c631e95573",
+    "revision": "7bd38738a4e438cfd9338fa0b64c3121",
     "url": "/colorify/index.html"
   }
 ];
