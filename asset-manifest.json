@@ -1,14 +1,14 @@
 {
-  "main.css": "/colorify/static/css/main.35592dd6.chunk.css",
-  "main.js": "/colorify/static/js/main.a67e0fc9.chunk.js",
-  "main.js.map": "/colorify/static/js/main.a67e0fc9.chunk.js.map",
-  "static/js/1.1f5bc313.chunk.js": "/colorify/static/js/1.1f5bc313.chunk.js",
-  "static/js/1.1f5bc313.chunk.js.map": "/colorify/static/js/1.1f5bc313.chunk.js.map",
+  "main.css": "/colorify/static/css/main.1b567745.chunk.css",
+  "main.js": "/colorify/static/js/main.25a16a5b.chunk.js",
+  "main.js.map": "/colorify/static/js/main.25a16a5b.chunk.js.map",
+  "static/js/1.12efcf75.chunk.js": "/colorify/static/js/1.12efcf75.chunk.js",
+  "static/js/1.12efcf75.chunk.js.map": "/colorify/static/js/1.12efcf75.chunk.js.map",
   "runtime~main.js": "/colorify/static/js/runtime~main.62ec2b76.js",
   "runtime~main.js.map": "/colorify/static/js/runtime~main.62ec2b76.js.map",
-  "static/media/logo.svg": "/colorify/static/media/logo.5d5d9eef.svg",
-  "static/css/main.35592dd6.chunk.css.map": "/colorify/static/css/main.35592dd6.chunk.css.map",
+  "static/media/index.css": "/colorify/static/media/gear.8e485e29.svg",
+  "static/css/main.1b567745.chunk.css.map": "/colorify/static/css/main.1b567745.chunk.css.map",
   "index.html": "/colorify/index.html",
-  "precache-manifest.73215c9c5930cd9147dc7d2bf370b323.js": "/colorify/precache-manifest.73215c9c5930cd9147dc7d2bf370b323.js",
+  "precache-manifest.105359acf98e503ff4fe540de28954ea.js": "/colorify/precache-manifest.105359acf98e503ff4fe540de28954ea.js",
   "service-worker.js": "/colorify/service-worker.js"
 }
