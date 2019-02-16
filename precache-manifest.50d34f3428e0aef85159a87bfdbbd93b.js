@@ -28,6 +28,10 @@ self.__precacheManifest = [
     "url": "/colorify/static/js/main.179d2184.chunk.js"
   },
   {
+    "revision": "8e485e29bea66a7e67607676f2365acd",
+    "url": "/colorify/static/media/gear.8e485e29.svg"
+  },
+  {
     "revision": "86e67b9c265a13608c08282612de18ff",
     "url": "/colorify/static/media/mixer.86e67b9c.svg"
   },
@@ -38,10 +42,6 @@ self.__precacheManifest = [
   {
     "revision": "1abef5f13fe4b8905dc8a5fea6dbd5b4",
     "url": "/colorify/static/media/menu.1abef5f1.svg"
-  },
-  {
-    "revision": "8e485e29bea66a7e67607676f2365acd",
-    "url": "/colorify/static/media/gear.8e485e29.svg"
   },
   {
     "revision": "28270fa64cd2219ec22e04be592124a4",
