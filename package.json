@@ -2,7 +2,7 @@
 	"name": "colorify.org",
 	"version": "1.0.0",
 	"private": false,
-	"homepage": "https://rahmanyerli.github.io/colorify/",
+	"homepage": "https://colorify.org",
 	"dependencies": {
 		"gh-pages": "^2.0.1",
 		"react": "^16.8.0",
@@ -29,7 +29,7 @@
 	],
 	"description": "Useful color palettes for designers.",
 	"main": "index.js",
-	"repository": "https://github.com/rahmanyerli/colorify.org.git",
+	"repository": "https://github.com/rahmanyerli/colorify.git",
 	"author": "Rahman Yerli <rahmanyerli@gmail.com>",
 	"license": "MIT"
 }

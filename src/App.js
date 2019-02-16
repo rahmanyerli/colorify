@@ -27,7 +27,7 @@ class App extends Component {
 						</Section>
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route exact path="/home" component={Home} />
+							<Route path="/home" component={Home} />
 							<Route path="/material-colors" component={MaterialColors} />
 							<Route path="/flat-colors" component={FlatColors} />
 							<Route path="/color-generator" component={ColorGenerator} />
