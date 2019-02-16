@@ -1,55 +1,55 @@
 class Color {
 
 	static changeResultType = () => {
-		let resultType = document.querySelector("input[type=radio][name=type]:checked").value;
-		let colorPalette = document.getElementById("colorPalette");
-		let colorCells = colorPalette.querySelectorAll("textarea");
+		const resultType = document.querySelector("input[type=radio][name=type]:checked").value;
+		const colorPalette = document.getElementById("colorPalette");
+		const colorCells = colorPalette.querySelectorAll("div.color");
 		if (colorCells) {
 			for (const colorCell of colorCells) {
-				let color = colorCell.value;
+				const color = colorCell.textContent;
 				if (Color.isHex(color)) {
 					let rgb;
 					switch (resultType) {
 						case "rgb":
 							rgb = Color.hexToRgb(color);
-							colorCell.value = Color.toRgbString(rgb.r, rgb.g, rgb.b);
+							colorCell.textContent = Color.toRgbString(rgb.r, rgb.g, rgb.b);
 							break;
 						case "hsl":
 							rgb = Color.hexToRgb(color);
-							let hsl = Color.rgbToHsl(rgb.r, rgb.g, rgb.b);
-							colorCell.value = Color.toHslString(hsl.h, hsl.s, hsl.l);
+							const hsl = Color.rgbToHsl(rgb.r, rgb.g, rgb.b);
+							colorCell.textContent = Color.toHslString(hsl.h, hsl.s, hsl.l);
 							break;
 						default:
 							break;
 					}
 				}
 				else if (Color.isRgb(color)) {
-					let rgb = Color.toRgbObject(color);
+					const rgb = Color.toRgbObject(color);
 					switch (resultType) {
 						case "hex":
-							let hex = Color.rgbToHex(rgb.r, rgb.g, rgb.b);
-							colorCell.value = hex;
+							const hex = Color.rgbToHex(rgb.r, rgb.g, rgb.b);
+							colorCell.textContent = hex;
 							break;
 						case "hsl":
-							let hsl = Color.rgbToHsl(rgb.r, rgb.g, rgb.b);
-							colorCell.value = Color.toHslString(hsl.h, hsl.s, hsl.l);
+							const hsl = Color.rgbToHsl(rgb.r, rgb.g, rgb.b);
+							colorCell.textContent = Color.toHslString(hsl.h, hsl.s, hsl.l);
 							break;
 						default:
 							break;
 					}
 				}
 				else if (Color.isHsl(color)) {
-					let hsl = Color.toHslObject(color);
+					const hsl = Color.toHslObject(color);
 					let rgb;
 					switch (resultType) {
 						case "hex":
 							rgb = Color.hslToRgb(hsl.h, hsl.s, hsl.l);
-							let hex = Color.rgbToHex(rgb.r, rgb.g, rgb.b);
-							colorCell.value = hex;
+							const hex = Color.rgbToHex(rgb.r, rgb.g, rgb.b);
+							colorCell.textContent = hex;
 							break;
 						case "rgb":
 							rgb = Color.hslToRgb(hsl.h, hsl.s, hsl.l);
-							colorCell.value = Color.toRgbString(rgb.r, rgb.g, rgb.b);
+							colorCell.textContent = Color.toRgbString(rgb.r, rgb.g, rgb.b);
 							break;
 						default:
 							break;
@@ -60,25 +60,24 @@ class Color {
 	}
 
 	static createColorCell = () => {
-		let colorCell = document.createElement("textarea");
+		const colorCell = document.createElement("div");
 		colorCell.classList.add("color");
-		colorCell.setAttribute("readonly", "readonly");
 		colorCell.addEventListener("click", Color.copyToClipboard);
 		return colorCell;
 	}
 
 	static generateAll = () => {
-		let iconGear = document.getElementById("iconGear");
+		const iconGear = document.getElementById("iconGear");
 		iconGear.classList.add("rotate");
-		let colorPalette = document.getElementById("colorPalette");
-		let colorTone = document.querySelector("input[type=radio][name=tone]:checked").value;
-		let resultType = document.querySelector("input[type=radio][name=type]:checked").value;
+		const colorPalette = document.getElementById("colorPalette");
+		const colorTone = document.querySelector("input[type=radio][name=tone]:checked").value;
+		const resultType = document.querySelector("input[type=radio][name=type]:checked").value;
 		colorPalette.innerHTML = "";
-		for (let i = 0; i < 18; i++) {
-			let colorCell = Color.createColorCell();
-			let color = Color.generate(colorTone, resultType);
+		for (let i = 0; i < 20; i++) {
+			const colorCell = Color.createColorCell();
+			const color = Color.generate(colorTone, resultType);
 			colorCell.style.backgroundColor = color;
-			colorCell.value = color;
+			colorCell.textContent = color;
 			colorPalette.appendChild(colorCell);
 		}
 		setTimeout(() => {
@@ -87,23 +86,27 @@ class Color {
 	}
 
 	static createPalette = () => {
-		let iconGear = document.getElementById("iconGear");
+		const colorText = document.getElementById("colorText");
+		colorText.value = "";
+		const iconGear = document.getElementById("iconGear");
 		iconGear.classList.add("rotate");
-		let colorPalette = document.getElementById("colorPalette");
+		const colorPalette = document.getElementById("colorPalette");
 		colorPalette.innerHTML = "";
-		let r = Color.randomColor(0, 255);
-		let g = Color.randomColor(0, 255);
-		let b = Color.randomColor(0, 255);
-		let resultType = document.querySelector("input[type=radio][name=type]:checked").value;
+		const r = Color.randomColor(0, 255);
+		const g = Color.randomColor(0, 255);
+		const b = Color.randomColor(0, 255);
+		const resultType = document.querySelector("input[type=radio][name=type]:checked").value;
 
-		for (let i = 1; i < 20; i++) {
-			let colorCell = document.createElement("textarea");
+		for (let i = 1; i < 21; i++) {
+			const colorCell = document.createElement("div");
 			colorCell.classList.add("color");
-			colorCell.setAttribute("readonly", "readonly");
-			let hsl = Color.rgbToHsl(r, g, b);
+			const hsl = Color.rgbToHsl(r, g, b);
 			let l = i * 0.05;
-			let rgb = Color.hslToRgb(hsl.h, hsl.s, l);
-			let color = "";
+			if (i === 20) {
+				l = l - 0.025;
+			}
+			const rgb = Color.hslToRgb(hsl.h, hsl.s, l);
+			let color;
 			switch (resultType) {
 				case "hex":
 					color = Color.rgbToHex(rgb.r, rgb.g, rgb.b);
@@ -118,8 +121,9 @@ class Color {
 					break;
 			}
 			colorCell.style.backgroundColor = color;
-			colorCell.value = color;
+			colorCell.textContent = color;
 			colorCell.addEventListener("click", Color.copyToClipboard);
+			colorCell.setAttribute("data-lightness", Math.round(1000 - (l * 1000)));
 			colorPalette.appendChild(colorCell);
 		}
 		setTimeout(() => {
@@ -143,9 +147,9 @@ class Color {
 			default:
 				break;
 		}
-		let r = Color.randomColor(min, max);
-		let g = Color.randomColor(min, max);
-		let b = Color.randomColor(min, max);
+		const r = Color.randomColor(min, max);
+		const g = Color.randomColor(min, max);
+		const b = Color.randomColor(min, max);
 		let color;
 		switch (resultType) {
 			case "hex":
@@ -155,7 +159,7 @@ class Color {
 				color = Color.toRgbString(r, g, b);
 				break;
 			case "hsl":
-				let hsl = Color.rgbToHsl(r, g, b);
+				const hsl = Color.rgbToHsl(r, g, b);
 				color = Color.toHslString(hsl.h, hsl.s, hsl.l);
 				break;
 			default:
@@ -165,10 +169,10 @@ class Color {
 	}
 
 	static shadeAll = () => {
-		let colorPalette = document.getElementById("colorPalette");
+		const colorPalette = document.getElementById("colorPalette");
 		colorPalette.innerHTML = "";
-		let resultType = document.querySelector("input[type=radio]:checked").value;
-		let color = document.getElementById("colorText").value;
+		const resultType = document.querySelector("input[type=radio]:checked").value;
+		const color = document.getElementById("colorText").value;
 		let rgb;
 		let hsl = { h: 0, s: 0, l: 0 };
 		if (Color.isHex(color)) {
@@ -180,7 +184,75 @@ class Color {
 			hsl = Color.rgbToHsl(rgb.r, rgb.g, rgb.b);
 		}
 		else if (Color.isHsl(color)) {
-			let hslArray = color.substring(4, color.length - 1).replace(/\s/g, "").split(",");
+			const hslArray = color.substring(4, color.length - 1).replace(/\s/g, "").split(",");
+			hsl.h = hslArray[0];
+			hsl.s = parseFloat(hslArray[1].replace(/%/g, "")) / 100;
+			hsl.l = parseFloat(hslArray[2].replace(/%/g, "")) / 100;
+		}
+		else {
+			return false;
+		}
+		for (let i = 1; i < 21; i++) {
+			let l = i / 20;
+			if (i === 20) {
+
+				l = l - 0.025;
+			}
+			const colorCell = Color.shade(hsl, l, resultType);
+			colorCell.setAttribute("data-lightness", Math.round(1000 - (l * 1000)));
+			colorPalette.appendChild(colorCell);
+			// if (hsl.l > l && hsl.l < l + 0.049) {
+			// 	const originalColor = Color.shade(hsl, hsl.l, resultType);
+			// 	originalColor.style.animation = "wiggle 1s ease";
+			// 	originalColor.setAttribute("data-lightness", Math.round(1000 - (l * 1000)));
+			// 	colorPalette.appendChild(originalColor);
+			// 	Color.setTempText(originalColor, 2000, "your tone is here!");
+			// }
+			// else if (Math.round(hsl.l * 100) === Math.round(l * 100)) {
+			// 	colorCell.style.animation = "wiggle 1s ease";
+			// 	Color.setTempText(colorCell, 2000, "your tone is here!");
+			// }
+		}
+	}
+
+
+	static shade = (hsl, l, resultType) => {
+		const colorCell = Color.createColorCell();
+		const rgb = Color.hslToRgb(hsl.h, hsl.s, l);
+		const hex = Color.rgbToHex(rgb.r, rgb.g, rgb.b);
+		colorCell.style.backgroundColor = hex;
+
+		switch (resultType) {
+			case "hex":
+				colorCell.textContent = hex;
+				break;
+			case "rgb":
+				colorCell.textContent = Color.toRgbString(rgb.r, rgb.g, rgb.b);
+				break;
+			case "hsl":
+				colorCell.textContent = Color.toHslString(hsl.h, hsl.s, l);
+				break;
+			default:
+				break;
+		}
+		return colorCell;
+	}
+
+	static getTones = (color) => {
+		const tones = [];
+		const resultType = "hex";
+		let rgb;
+		let hsl = { h: 0, s: 0, l: 0 };
+		if (Color.isHex(color)) {
+			rgb = Color.hexToRgb(color);
+			hsl = Color.rgbToHsl(rgb.r, rgb.g, rgb.b);
+		}
+		else if (Color.isRgb(color)) {
+			rgb = Color.toRgbObject(color);
+			hsl = Color.rgbToHsl(rgb.r, rgb.g, rgb.b);
+		}
+		else if (Color.isHsl(color)) {
+			const hslArray = color.substring(4, color.length - 1).replace(/\s/g, "").split(",");
 			hsl.h = hslArray[0];
 			hsl.s = parseFloat(hslArray[1].replace(/%/g, "")) / 100;
 			hsl.l = parseFloat(hslArray[2].replace(/%/g, "")) / 100;
@@ -190,50 +262,97 @@ class Color {
 		}
 		for (let i = 1; i < 20; i++) {
 			let l = i / 20;
-			let colorCell = Color.shade(hsl, l, resultType);
-			colorPalette.appendChild(colorCell);
-			if (hsl.l > l && hsl.l < l + 0.049) {
-				let originalColor = Color.shade(hsl, hsl.l, resultType);
-				originalColor.style.animation = "wiggle 1s ease";
-				colorPalette.appendChild(originalColor);
-				Color.setTempText(originalColor, 2000, "your shade is here!");
-			}
-			else if (hsl.l === l) {
-				colorCell.style.animation = "wiggle 1s ease";
-				Color.setTempText(colorCell, 2000, "your shade is here!");
-			}
+			const tone = Color.getTone(hsl, l, resultType);
+			tones.push(tone);
 		}
+		return tones;
 	}
 
-	static shade = (hsl, l, resultType) => {
-		let colorCell = Color.createColorCell();
-		let rgb = Color.hslToRgb(hsl.h, hsl.s, l);
-		let hex = Color.rgbToHex(rgb.r, rgb.g, rgb.b);
-		colorCell.style.backgroundColor = hex;
+	static getTone = (hsl, l, resultType) => {
+		const rgb = Color.hslToRgb(hsl.h, hsl.s, l);
+		const hex = Color.rgbToHex(rgb.r, rgb.g, rgb.b);
+
+		let tone = { name: "", value: "" };
+		tone.name = Math.round(1000 - (l * 1000));
 
 		switch (resultType) {
 			case "hex":
-				colorCell.value = hex;
+				tone.value = hex;
 				break;
 			case "rgb":
-				colorCell.value = Color.toRgbString(rgb.r, rgb.g, rgb.b);
+				tone.value = Color.toRgbString(rgb.r, rgb.g, rgb.b);
 				break;
 			case "hsl":
-				colorCell.value = Color.toHslString(hsl.h, hsl.s, l);
+				tone.value = Color.toHslString(hsl.h, hsl.s, l);
 				break;
 			default:
 				break;
 		}
-		return colorCell;
+		return tone;
 	}
 
+	static mix = (colors) => {
+		let r = 0;
+		let g = 0;
+		let b = 0;
+		if (colors && colors.length > 0) {
+			for (const color of colors) {
+				const rgb = color.getAttribute("data-color").split(",");
+				r += parseInt(rgb[0]);
+				g += parseInt(rgb[1]);
+				b += parseInt(rgb[2]);
+			}
+			r = Math.round(r / colors.length);
+			g = Math.round(g / colors.length);
+			b = Math.round(b / colors.length);
+		}
+		return { r: r, g: g, b: b };
+	}
+
+	static mixall = () => {
+		const colorMix = document.getElementById("colorMix");
+		const colors = colorMix.querySelectorAll("[draggable]");
+		const colorArray = [];
+		const rgb = "rgb(255, 255, 255)";
+		if (colors && colors.length > 0) {
+			for (const color of colors) {
+				colorArray.push(color.getAttribute("data-color"));
+			}
+			const mixed = Color.mix(colors);
+			const resultType = document.querySelector("input[type=radio][name=type]:checked").value;
+			let color;
+			switch (resultType) {
+				case "hex":
+					color = Color.rgbToHex(mixed.r, mixed.g, mixed.b);
+					break;
+				case "rgb":
+					color = Color.toRgbString(rgb.r, rgb.g, rgb.b);
+					break;
+				case "hsl":
+					const hsl = Color.rgbToHsl(mixed.r, mixed.g, mixed.b);
+					color = Color.toHslString(hsl.h, hsl.s, hsl.l);
+					break;
+				default:
+					break;
+			}
+			const colorText = document.getElementById("colorText");
+			colorText.value = color;
+			Color.shadeAll();
+		}
+		else {
+			const em = document.createElement("em");
+			em.textContent = "drop zone";
+			em.className = "span-12 text-center color-6";
+			colorMix.appendChild(em);
+		}
+	}
 
 	static randomColor = (min, max) => {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
 	static toHex = (c) => {
-		let hex = parseInt(c).toString(16).toUpperCase();
+		const hex = parseInt(c).toString(16).toUpperCase();
 		return hex.length === 1 ? "0" + hex : hex;
 	}
 
@@ -242,7 +361,7 @@ class Color {
 	}
 
 	static hexToRgb = (hex) => {
-		let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 		return result ? {
 			r: parseInt(result[1], 16),
 			g: parseInt(result[2], 16),
@@ -251,18 +370,20 @@ class Color {
 	}
 
 	static copyToClipboard = (event) => {
-		let element = event.target;
-		element.select();
+		const element = event.target;
+		const el = document.createElement("textarea");
+		el.value = element.textContent;
+		el.setAttribute('readonly', '');
+		document.body.appendChild(el);
+		el.select();
 		document.execCommand("copy");
-		let text = element.value;
-		element.value = "copied!";
-		element.setAttribute("disabled", "disabled");
+		const text = element.textContent;
+		element.textContent = "copied!";
+		el.remove();
 		setTimeout(() => {
-			element.value = text;
-			element.removeAttribute("disabled");
+			element.textContent = text;
 		}, 500);
 	}
-
 
 	static hslToRgb = (hue, sat, light) => {
 		let t1, t2, r, g, b;
@@ -336,17 +457,17 @@ class Color {
 	}
 
 	static isHex = (value) => {
-		let pattern = /^#(?:[0-9a-f]{3}){2}$/i;
+		const pattern = /^#(?:[0-9a-f]{3}){2}$/i;
 		return pattern.test(value);
 	}
 
 	static isRgb = (value) => {
-		let pattern = /([R][G][B][A]?[(]\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*,\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*,\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])(\s*,\s*((0\.[0-9]{1})|(1\.0)|(1)))?[)])/i;
+		const pattern = /([R][G][B][A]?[(]\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*,\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*,\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])(\s*,\s*((0\.[0-9]{1})|(1\.0)|(1)))?[)])/i;
 		return pattern.test(value);
 	}
 
 	static isHsl = (value) => {
-		let pattern = /hsl\(\s*(\d+)\s*,\s*(\d+(?:\.\d+)?%)\s*,\s*(\d+(?:\.\d+)?%)\)/i;
+		const pattern = /hsl\(\s*(\d+)\s*,\s*(\d+(?:\.\d+)?%)\s*,\s*(\d+(?:\.\d+)?%)\)/i;
 		return pattern.test(value);
 	}
 
@@ -359,62 +480,21 @@ class Color {
 	}
 
 	static toRgbObject = (rgbText) => {
-		let rgbArray = rgbText.substring(4, rgbText.length - 1).replace(/\s/g, "").split(",");
+		const rgbArray = rgbText.substring(4, rgbText.length - 1).replace(/\s/g, "").split(",");
 		return { r: rgbArray[0], g: rgbArray[1], b: rgbArray[2] };
 	}
 
 	static toHslObject = (hslText) => {
-		let hslArray = hslText.substring(4, hslText.length - 1).replace(/\s/g, "").split(",");
+		const hslArray = hslText.substring(4, hslText.length - 1).replace(/\s/g, "").split(",");
 		return { h: hslArray[0], s: parseFloat(hslArray[1].replace(/%/g, "")) / 100, l: parseFloat(hslArray[2].replace(/%/g, "")) / 100 };
 	}
 
 	static setTempText = (element, delay, text) => {
-		let original = element.value;
-		element.value = text;
+		const original = element.textContent;
+		element.textContent = text;
 		setTimeout(() => {
-			element.value = original;
+			element.textContent = original;
 		}, delay);
-	}
-
-	static mix = (colors) => {
-		let r = 0;
-		let g = 0;
-		let b = 0;
-		if (colors && colors.length > 0) {
-			for (const color of colors) {
-				let rgb = color.getAttribute("data-color").split(",");
-				r += parseInt(rgb[0]);
-				g += parseInt(rgb[1]);
-				b += parseInt(rgb[2]);
-			}
-			r = Math.round(r / colors.length);
-			g = Math.round(g / colors.length);
-			b = Math.round(b / colors.length);
-		}
-		return { r: r, g: g, b: b };
-	}
-
-	static mixall = () => {
-		const colorMix = document.getElementById("colorMix");
-		const colors = colorMix.querySelectorAll("[draggable]");
-		const colorArray = [];
-		let rgb = "rgb(255, 255, 255)";
-		if (colors && colors.length > 0) {
-			for (const color of colors) {
-				colorArray.push(color.getAttribute("data-color"));
-			}
-			const mixed = Color.mix(colors);
-			rgb = Color.toRgbString(mixed.r, mixed.g, mixed.b);
-		}
-		else {
-			let em = document.createElement("em");
-			em.textContent = "drop zone";
-			em.className = "span-12 text-center color-3";
-			colorMix.appendChild(em);
-		}
-		let colorText = document.getElementById("colorText");
-		colorText.value = rgb;
-		Color.shadeAll();
 	}
 }
 

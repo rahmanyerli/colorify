@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { Main, Section, Div, Span, Hr, Br } from '../elements';
-import { Label, Radio, Button } from '../inputs';
+import { Label, Text, Radio, Button } from '../inputs';
 import Color from '../color';
 
-class ColorGenerator extends Component {
+class ColorShadesTints extends Component {
 
 	componentDidMount() {
-		Color.generateAll();
+		Color.createPalette();
 	}
 
 	render() {
 		return (
 			<Main>
 				<br />
-				<h1>Color Generator</h1>
+				<h1>Color Shades &#38; Tints</h1>
 				<hr />
 				<Div class="settings">
 					<Section class="merge">
@@ -24,18 +24,13 @@ class ColorGenerator extends Component {
 						<Radio name="type" id="radioHsl" value="hsl" onchange={Color.changeResultType} />
 						<Label for="radioHsl">hsl </Label>
 					</Section>
-					<Section class="merge">
-						<Radio name="tone" id="radioNormal" value="normal" checked onchange={Color.generateAll} />
-						<Label for="radioNormal">Normal</Label>
-						<Radio name="tone" id="radioMatt" value="matt" onchange={Color.generateAll} />
-						<Label for="radioMatt">Matt</Label>
-						<Radio name="tone" id="radioPastel" value="pastel" onchange={Color.generateAll} />
-						<Label for="radioPastel">Pastel</Label>
+					<Section>
+						<Text id="colorText" onchange={Color.shadeAll} placeholder="#FF0000  rgb(255, 0, 0)  hsl(0, 100%, 50%)" />
 					</Section>
 					<Section>
-						<Button onclick={Color.generateAll}>
+						<Button onclick={Color.createPalette}>
 							<Span id="iconGear" class="icon icon-gear">&nbsp;</Span>Randomize
-							</Button>
+						</Button>
 					</Section>
 				</Div>
 				<Hr />
@@ -46,4 +41,4 @@ class ColorGenerator extends Component {
 	}
 }
 
-export default ColorGenerator;
+export default ColorShadesTints;

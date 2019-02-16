@@ -7,6 +7,9 @@ export class Div extends Component {
 				id={this.props.id}
 				name={this.props.name}
 				className={this.props.class}
+				draggable={this.props.draggable}
+				dropzone={this.props.dropzone}
+				data-color={this.props['data-color']}
 			>
 				{this.props.children}
 			</div>
@@ -21,6 +24,8 @@ export class Header extends Component {
 				id={this.props.id}
 				name={this.props.name}
 				className={this.props.class}
+				draggable={this.props.draggable}
+				dropzone={this.props.dropzone}
 			>
 				{this.props.children}
 			</header>
@@ -35,6 +40,8 @@ export class Main extends Component {
 				id={this.props.id}
 				name={this.props.name}
 				className={this.props.class}
+				draggable={this.props.draggable}
+				dropzone={this.props.dropzone}
 			>
 				{this.props.children}
 			</main>
@@ -49,6 +56,8 @@ export class Footer extends Component {
 				id={this.props.id}
 				name={this.props.name}
 				className={this.props.class}
+				draggable={this.props.draggable}
+				dropzone={this.props.dropzone}
 			>
 				{this.props.children}
 			</footer>
@@ -63,6 +72,8 @@ export class Aside extends Component {
 				id={this.props.id}
 				name={this.props.name}
 				className={this.props.class}
+				draggable={this.props.draggable}
+				dropzone={this.props.dropzone}
 			>
 				{this.props.children}
 			</aside>
@@ -77,6 +88,8 @@ export class Article extends Component {
 				id={this.props.id}
 				name={this.props.name}
 				className={this.props.class}
+				draggable={this.props.draggable}
+				dropzone={this.props.dropzone}
 			>
 				{this.props.children}
 			</article>
@@ -91,6 +104,8 @@ export class Section extends Component {
 				id={this.props.id}
 				name={this.props.name}
 				className={this.props.class}
+				draggable={this.props.draggable}
+				dropzone={this.props.dropzone}
 			>
 				{this.props.children}
 			</section>

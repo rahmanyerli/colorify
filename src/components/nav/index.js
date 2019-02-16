@@ -5,11 +5,11 @@ class Nav extends Component {
 	state = {
 		links: [
 			{ name: "Home", to: "/home", class: "icon icon-right icon-home" },
+			{ name: "Material Colors", to: "/material-colors", class: "icon icon-right icon-palette" },
+			{ name: "Flat Colors", to: "/flat-colors", class: "icon icon-right icon-palette" },
 			{ name: "Color Generator", to: "/color-generator", class: "icon icon-right icon-gear" },
-			{ name: "Color Palettes", to: "/color-palettes", class: "icon icon-right icon-palette" },
-			{ name: "Color Shader", to: "/color-shader" },
-			{ name: "Color Mixer", to: "/color-mixer" },
-			{ name: "Material Colors", to: "#" }]
+			{ name: "Color Shades & Tints", to: "/color-shades-tints", class: "icon icon-right icon-shader" },
+			{ name: "Color Mixer", to: "/color-mixer", class: "icon icon-right icon-mixer" }]
 	}
 
 	render() {
