@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Main, Section, Div, Span, Hr, Br } from '../elements';
+import { Main, Section, Div, Span } from '../elements';
 import { Label, Text, Radio, Button } from '../inputs';
 import Color from '../color';
 
@@ -33,7 +33,7 @@ class ColorShadesTints extends Component {
 						</Button>
 					</Section>
 				</Div>
-				<Hr />
+				<hr />
 				<Div id="colorPalette" class="color-palette">
 				</Div>
 			</Main>

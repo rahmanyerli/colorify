@@ -21,7 +21,7 @@ class MenuButton extends Component {
 		window.addEventListener('scroll', function () {
 			// detects new state and compares it with the new one
 			let buttonMenu = document.getElementById("menu-button");
-			if ((document.body.getBoundingClientRect()).top > scrollPos) {
+			if ((document.body.getBoundingClientRect()).top < scrollPos) {
 				setTimeout(() => {
 					buttonMenu.classList.remove("scale-1");
 					buttonMenu.classList.add("scale-0");

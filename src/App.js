@@ -7,8 +7,8 @@ import FlatColors from './components/flat-colors';
 import ColorGenerator from './components/color-generator';
 import ColorShadesTints from './components/color-shades-tints';
 import ColorMixer from './components/color-mixer';
+import ColorTheory from './components/color-theory';
 import Notfound from './components/notfound';
-import { Main, Section, Div } from './components/elements';
 import MenuButton from './components/menu-button';
 import SideMenu from './components/side-menu';
 
@@ -17,14 +17,14 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<Div>
-					<Main id="main">
-						<Section>
+				<div>
+					<main id="main">
+						<section>
 							<MenuButton />
 							<SideMenu>
 								<Nav />
 							</SideMenu>
-						</Section>
+						</section>
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route path="/home" component={Home} />
@@ -33,11 +33,12 @@ class App extends Component {
 							<Route path="/color-generator" component={ColorGenerator} />
 							<Route path="/color-shades-tints" component={ColorShadesTints} />
 							<Route path="/color-mixer" component={ColorMixer} />
+							<Route path="/color-theory" component={ColorTheory} />
 							<Route component={Notfound} />
 						</Switch>
-						<Section class="ads" />
-					</Main>
-				</Div>
+						<section className="ads" />
+					</main>
+				</div>
 			</Router>
 		);
 	}

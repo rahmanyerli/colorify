@@ -29,6 +29,8 @@ class DragDrop {
 			// clone.id = "color-" + Math.floor(Math.random() * (10000));
 			clone.addEventListener("dragstart", DragDrop.dragstart);
 			clone.addEventListener("dragend", DragDrop.dragend);
+			clone.addEventListener("touchstart", DragDrop.dragstart);
+			clone.addEventListener("touchend", DragDrop.dragend);
 			clone.textContent = "";
 			clone.classList.remove("span-4");
 			clone.classList.add("span-1");

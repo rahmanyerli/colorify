@@ -313,7 +313,6 @@ class Color {
 		const colorMix = document.getElementById("colorMix");
 		const colors = colorMix.querySelectorAll("[draggable]");
 		const colorArray = [];
-		const rgb = "rgb(255, 255, 255)";
 		if (colors && colors.length > 0) {
 			for (const color of colors) {
 				colorArray.push(color.getAttribute("data-color"));
@@ -326,7 +325,7 @@ class Color {
 					color = Color.rgbToHex(mixed.r, mixed.g, mixed.b);
 					break;
 				case "rgb":
-					color = Color.toRgbString(rgb.r, rgb.g, rgb.b);
+					color = Color.toRgbString(mixed.r, mixed.g, mixed.b);
 					break;
 				case "hsl":
 					const hsl = Color.rgbToHsl(mixed.r, mixed.g, mixed.b);
@@ -480,13 +479,25 @@ class Color {
 	}
 
 	static toRgbObject = (rgbText) => {
-		const rgbArray = rgbText.substring(4, rgbText.length - 1).replace(/\s/g, "").split(",");
-		return { r: rgbArray[0], g: rgbArray[1], b: rgbArray[2] };
+		if (Color.isRgb(rgbText)) {
+			const rgbArray = rgbText.substring(4, rgbText.length - 1).replace(/\s/g, "").split(",");
+			return { r: rgbArray[0], g: rgbArray[1], b: rgbArray[2] };
+		}
 	}
 
 	static toHslObject = (hslText) => {
-		const hslArray = hslText.substring(4, hslText.length - 1).replace(/\s/g, "").split(",");
-		return { h: hslArray[0], s: parseFloat(hslArray[1].replace(/%/g, "")) / 100, l: parseFloat(hslArray[2].replace(/%/g, "")) / 100 };
+		if (Color.isHsl(hslText)) {
+			const hslArray = hslText.substring(4, hslText.length - 1).replace(/\s/g, "").split(",");
+			return { h: parseFloat(hslArray[0]), s: parseFloat(hslArray[1].replace(/%/g, "")) / 100, l: parseFloat(hslArray[2].replace(/%/g, "")) / 100 };
+		}
+	}
+
+	static isDark = (rgb) => {
+		if (parseInt(rgb.r) + parseInt(rgb.g) + parseInt(rgb.b) < 384) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	static setTempText = (element, delay, text) => {

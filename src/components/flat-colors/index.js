@@ -55,8 +55,9 @@ class FlatColors extends Component {
 	getColors = () => {
 		const colors = this.state.colors.map((color) =>
 			<div className="material" key={color.name}>
-				<h3 className="text-center" style={{ color: color.value }}>{color.name}</h3>
+				<h2 className="text-center" style={{ color: color.value }}>{color.name}</h2>
 				{this.getTones(color)}
+				<br />
 			</div>
 		)
 		return colors;

@@ -1,0 +1,13 @@
+.converter {
+	max-width: 30rem;
+}
+
+.converter input, .converter input:focus {
+	border-radius: 0;
+	padding-left: 0;
+	font-size: 1.25rem;
+	background-color: transparent;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}

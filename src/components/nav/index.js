@@ -9,7 +9,8 @@ class Nav extends Component {
 			{ name: "Flat Colors", to: "/flat-colors", class: "icon icon-right icon-palette" },
 			{ name: "Color Generator", to: "/color-generator", class: "icon icon-right icon-gear" },
 			{ name: "Color Shades & Tints", to: "/color-shades-tints", class: "icon icon-right icon-shader" },
-			{ name: "Color Mixer", to: "/color-mixer", class: "icon icon-right icon-mixer" }]
+			{ name: "Color Mixer", to: "/color-mixer", class: "icon icon-right icon-mixer" },
+			{ name: "Color Theory", to: "/color-theory", class: "icon icon-right icon-mixer" }]
 	}
 
 	render() {
